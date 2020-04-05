@@ -10,6 +10,7 @@ $container_class = apply_filters( 'neve_container_class_filter', 'container', 'b
 get_header();
 
 ?>
+<h1>bu benim sayfam</h1>
 	<div class="<?php echo esc_attr( $container_class ); ?> archive-container">
 		<div class="row">
 			<?php do_action( 'neve_do_sidebar', 'blog-archive', 'left' ); ?>
