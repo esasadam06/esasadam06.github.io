@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SQL vs noSQL</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link href="css/clean-blog.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    Menu <i class="fa fa-bars"></i>
+                </button>
+                
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header" style="background-image: url('img/nosql-sql/topic.jpg'); height: 550px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-heading">
+                        
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Post Content -->
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <h1 style="font-size: 45px;">MySQL ve mongoDB üzerinden <br>SQL-noSQL karşılaştırması</h1>
+                    <h2 class="subheading" style="font-size: 26px;">noSQL nedir? Neden noSQL kullanılmalıdır?<br> noSQL ve SQL arasında ki farklar nelerdir? Avantajları ve dezavantajları nelerdir?</h2>
+
+                    <p>SQL vs noSQL (mongoDB vs MySQL)<br>Genel olarak MySQL ve mongoDB karşılaştırması üzerinden anlatmaya çalışacağım. ilk olarak hangisini seçmeniz gerektiğini anlamamız gerekiyor. Çünkü SQL ve noSQL aslında birbirinden ayrı dünyalar diyebiliriz. İsterseniz ayrı dünyalar demeyin fakat farklı teknolojiler olduğunu kesinlikle inkar edemeyiz.</p>
+
+                    <p>SQL'den bahsederek başlayalım. SQL bir database(veritabanı) değildir. SQL Structured Query Language'ın kısaltılmasıdır. Yani Aslına baktığımızda SQL bizim database sorguları yapmamıza olanak sağlayan bir dildir.</p>
+
+                    <p>Örnek olarak ; </p> <p style="color: blue; display: inline;">SELECT</p> 
+                    <span style="color:greenyellow; display: inline;">id, name</span> 
+                    <p style="color: blue; display: inline;">FROM</p> 
+                    <p style="color: purple; display: inline;">person</p>
+
+                    <p>Tabii ki yaptığımız sorguyu yapılandırmak(eklemek, çıkarmak,saymak vb.) için bir çok komutu vardır. Burada verdiğim örnek sadece bir sorguyu nasıl oluşturduğumuzun bir örneğidir. Belirli anahtar kelimeleri ve belirli bir yazım kuralı vardır. Görüntülemek istediğimiz verileri yazmamız gerekir ve bu verilerin çekileceği tabloları bildirmemiz gerekir. Örnekte keyword leri mavi, görüntülenmek istenin verileri yeşil ve verilerin alınacağı tabloyu mor rengine boyadım. SQL verileri sadece görüntülemek ile sınırlandırılmış komutlara sahip değildir,bunların yanı sıra veri eklemek(INSERT), yeni tablolar oluşturmak(CREATE), verileri güncellemek(UPDATE) veya silmek(DELETE) gibi önem arz eden komutlarada sahiptir. Birbiri ile kombine edebileceğiniz ağaç yapısına benzeyen birbirleri ile bağlantılı komutlara sahiptir. SQL kelimesini gözümüzün önüne getirdiğimizde aslında arkasında yatan database'i düşünüyoruz, böylece veritabanını SQL olarak düşünüyoruz. Oysa ki yapılandırılmış bir sorgu dili olan SQL ile tipik olarak kullanılan ilişkisel ve bazı varsayımlar üzerine çalışan veritabanımıza erişim sağlıyoruz. Böyle bir veritabanı tabii ki ilişkisel tablolarla çalışır.</p>
+                   
+                    <img src="img/nosql-sql/sql-yapisi.png" class="img-responsive" alt="">
+                  
+                    <p style="display: inline;">Bir mağaza için bir app yaptığımızı varsayarsak. Öncelikle yapıdan bahsedecek olursak yukarıda örnekte görüldüğü üzere kırmızı renki bölüm bizim </p> 
+                    <p style="color: red; display: inline;">Ürünler</p> 
+                    <p style="display: inline;">tablomuzdur. Tablolar bizim verileri tuttuğumuz(depoladığımız) bölümlerdir. Bu oluşturduğumuz tabloya istediğmiz gibi veri girişi tabii ki de sağlayamıyoruz. Bunun için girişi yapılacak verinin de kural, özellik ve niteliğini belirmemiz gerekmektedir. Bu işlemi resimde yeşil renkte gösterdiğim </p> 
+                    <p style="display: inline; color: green;">Columns</p> 
+                    <p style="display: inline;">(Sütunlar) yapmaktadır. Tablomuza girecek verilerin ne gibi bilgilere sahip olması gerektiğini bu kısımda belirlenir. Bizim tablomuzda </p>
+                    <p style="display: inline; color: green;">ID, Adi, Model, Fiyat, Stok</p>  <p style="display: inline;">columns'ları(sütunları) örnek olarak belirlenmiştir. Bu columns'ların sayısı ve niteliği(tipi:int, varchar, date...)ihtiyaca göre belirlenebilir. Tabloda veriler ise turuncu renkte belirtildiği gibi </p>
+                    <p style="display: inline; color: orange;">Rows</p> 
+                    <p style="display: inline;">'lar(Kayıtlar, Satırlar) şeklinde tutulur. Bütün rows'lar columns'lar ile belirtilen kurallara uygun olmak zorundadır. Bu durumda SQL Database yapısının net ve keskin veri saklama ve görüntüleme kurallarına sahip olduğunu ortaya koyuyor. Bu da tabloya eklenecek olan her şeyin columns yapısında belirttiğimiz içerik ve şartlara sahip olması gerektiğini gösteriyor. Tabi kii SQL Database sadece bir tablo ile bitmiyor. Aslında SQL Database'imiz bu yapıya sahip tabloların bir araya getirilmesi ve ilişkilendirilmesi ile oluşuyor.</p>
+
+                    <img src="img/nosql-sql/sql-iliskisi.png" class="img-responsive" alt="">
+                    
+                    <p style="display: inline;">Örnek olarak yukarıda ilişkilendirilmiş tablonun en temel hali ile çizilmiş bir yapısal resmini koydum. ilk olarak bu tabloların anlattığım gibi tablolar SQL Database yapısına uygun bir şekilde oluşturulmalıdır. Tabloların bu şekilde oluşturulduğunu varsayalım. Bu resimde bizim için önemli olan mor renk ile belirttiğim </p> 
+                    <p style="display: inline; color: purple; font: bolder;">Siparişler</p>  
+                    <p style="display: inline;">tablosudur. Görüldüğü üzere Siparişler tablosu kendisine ait columns'ların yanı sıra Ürünler ve Müşteriler tablolalarının da bazı columns'larını(M_ID, U_ID) da barındırmaktadır. Bu durumu basitçe açıklamak gerekirse senaryomuzda bir siparişin gerçekleşmesi için bir adet ürün ve bir adet müşteri gerekmektedir. Müşterinin kim olduğu(sipariş teslim adresi, iletişim bilgileri vb.) bilgisi müşteriler tablosunda tutulurken, müşteri sipariş verdiğinde sipariş tablosunda müşterinin bütün bilgileri olmamasına rağmen uniqe(eşsiz) bilgisi olan M_ID ile müşterinin bilgilerine ulaşılabilmektedir. Aynı durum ürünler içinde geçerlidir. Ürünler tablosunda bilgileri(Modeli, Markası, Fiyatı vb.) bulunan ürünlerin sadece U_ID bilgisine sahip olan siparişler tablosu ile ürünün bütün bilgilerine erişebilmekteyiz.</p>
+                    <p></p>
+                    <blockquote>Bu konu incelenirken akla ilk gelen soru:"Neden bütün bilgileri tek tabloda tutmuyoruz?Neden müşteri tablosuna ihtiyaç duyuyoruz? Aslında Müşterinin bilgileri de siparişler tablosunda tutulabilir mi?"</blockquote>
+
+                    <p>Hayır, tek tabloda tutamayız. Tekrar bir senaryo düşünelim mağazamızın database'in de kayıtlı bir müşteri artık bilgilerini tutmamızı istemediğini söyledi. KVKK'ya(Kişisel Verilerin Korunması Kanunu) göre müşterinin bu isteği üzerine onun bilgilerini saklamamız yasal bir suç. Müşterinin bilgilerini sipariş tablosundan ayrı tutmadığımızı düşünürsek onun bilgilerini silmek demek kişinin yapmış olduğu siparişleri de silmek anlamına gelir. Satmış olduğunuz ürünlere dair verileri de silmek zorunda kalacaksınız anlamına gelir. Bu da ileriye dönük olarak hiçbir işletmenin istemediği bir durumdur.</p>
+
+                    <p>Peki noSQL nedir? mongoDB nedir? </p>
+
+                    <p>mongodb basitçe humongous(kocaman) kelimesinden kaynaklanmaktadır, çünkü çok fazla veriyi çok verimli bir şekilde depolamak için üretilmiştir. noSQL kelimesi ise sql değil gibi algılanabilmektedir, fakat asıl anlamı (not only sql) sadece ilişkisel değildir.</p>
+
+                    <p>mongoDB'yi az önce incelemiş olduğumuz MySQL ile karşılaştırarak inceleyelim isterseniz.</p>
+
+                    <img src="img/nosql-sql/mysql-mongodb.png" class="img-responsive" alt="">
+
+                    <p style="display: inline;">Evet yukarıda görselde gördüğünüz gibi MySQL ve mongoDB arasında bazı farklılıklar var. Bu farklılıklar kullanılan teknoloji ve yöntem farklılığından ortaya çıkmaktadır. Bunları inceleyeck olursak yeşil renk ile belirtilen bölümde MySQL'de bulunan </p> 
+                    <p style="display: inline; color: green; font: bolder">Row</p> <p style="display: inline;"> yerine </p> 
+                    <p style="color: green; font: bolder; display: inline;">Document</p> 
+                    <p style="display: inline;">(doküman) geldiğini görüyoruz. Bu farklılığın sebebi MySQL'in yerine mongoDB dosya halinde verileri saklamaktadır. Bu sayede çok daha büyük verileri daha kolay depolayıp, daha hızlı erişime açabilme kapasitesine sahiptir. Yine MySQL bulunan </p>
+                    <p style="display: inline; color: orange; font:bolder;">Column</p> <p style="display: inline;"> yerine</p> 
+                    <p style="display: inline; color: orange; font: bolder;">Field</p> <p style="display: inline;">(alan) bulunmakta. Bu kısımda en önemli noSQL farklarından birisi ortaya çıkıyor. MySQL Structured Data(yapılandırılmış veri) prensibi vardır. Bu sayede veriler </p> 
+                    <p style="display: inline; color: orange; font:bolder;">Column</p> <p style="display: inline;">'lar ile ayrılmış bölümlerde belirli yapıda olan veriler belirli bölümlere eklenir. mongoDB'de ise</p> 
+                    <p style="display: inline; color: orange; font:bolder;">Field</p>  <p style="display: inline;">yapısı bize Unstructured Data(yapılandırılmamış veri) depolama yeteneği kazandırmaktadır. MySQL' bulunan</p>
+                    <p style="display: inline; color: red; font:bolder;">Table</p> <p style="display: inline;">'ın görevini ise mongoDB'de</p> 
+                    <p style="display: inline; color: red; font:bolder;">Collection</p> (koleksiyon) üstlenmektedir. Bu iki veritabanının yapısal karşılaştırması bu şekildedir.</p>
+
+                    <p>mongoDB ile veriye nasıl erişiyoruz peki?</p>
+                    
+                    <p style="display: inline;">Örnek olarak;</p><p style="display: inline; color: orange; font:bolder;"> db.koleksiyon</p> <p style="display: inline;">.</p><p style="display: inline; color: blue; font:bolder;">find</p> find();</p>
+
+                    <p style="display: inline;">Yukarıda örnek bir veri listeleme komutu bulunmaktadır. Programlama bilgisi olanların aşina olduğu bir yapıdır. mongoDB'de verileri listelemek için</p>
+                    <p style="display: inline; color: blue; font: bolder;">find</p><p style="display: inline;"> methodunu kullanıyoruz. mongoDB'de MySQL'de olduğu gibi veri ekleme(insert), veri silme(remove), veri güncelleme(update) methodları bulunmaktadır.</p>
+
+                    <p>mongoDB'nin bize sağladığı imkanlardan birisi de MySQL'de olan ACID(Atomic Transactions) yoktur. ACID aslında Atomicity, Consistency, Isolation, Durability kelimelerinin baş harflerinin bir araya getirilmesidir. Peki nedir bu ACID ve mongoDB'de neden yoktur. Türkçesine baktığımızda Atomicity-Atomic, Consistency-Tutarlılık, Isolation-İzolasyon, Durability-Dayanıklılık. Bu durumu bir banka havalesi ile anlatmak en uygunu diye düşünüyorum. Örneğin Ali Mehmet'e 100 tl göndersin. Bu işlem gerçekleşirken Ali'nin hesabından 100 tl eksilir sonra Mehmet'in hesabına 100 tl eklenir. Bu işlem tamamlana kadar başka hiçbir işlem gerçekleşmez. Bir işlem tamamen biter ve ikinci işlem başlar. ACID'in olmaması mongoDB'ye nasıl bir katkı sağlıyor bunu da bir yazışma uygulaması üzerinden inceleyelim. Örneğin bir yazışma uygulaması üzerinden Ali ile Mehmet yazışıyorlar. Ali bir yazı yazarken aynı anda Mehmet'de Ali'ye yazabiliyor. Hatta Ali bir dosya gönderirken aynı zamanda yazmaya devam edebiliyor. Çünkü bu uygulamada işlemler birbirini beklemiyor yani birinci işlem sürerken(Ali'nin mesajı Mehmet'e iletilirken) ikinci işlem(Mehmet'in mesajı Ali'ye iletiliyor) başlayabiliyor. Hatta daha önce bitebiliyor. Bu özelliği sayesinde bir çok platformda(oyunlar, mobil uygulamalar, vb.) tercih edilyor.</p>
+
+                    <a href="index.html">
+                        <span style="color: black; opacity: 50%; padding-left: 38%;" class="meta">Posted by <a href="index.html">Hüseyin KAVUNCU</a> on April 6, 2020</span>
+                        
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <ul class="list-inline text-center">
+                        <li>
+                            <a href="https://www.instagram.com/kavuncu_azade_/">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-instagram fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/in/h%C3%BCseyin-kavuncu-664485177/">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/esasadam06">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <p class="copyright text-muted">Copyright &copy; Your Website 2016</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="js/jqBootstrapValidation.js"></script>
+    <script src="js/contact_me.js"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="js/clean-blog.min.js"></script>
+
+</body>
+
+</html>
