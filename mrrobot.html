@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Mr.Robot Makinesi</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link href="css/clean-blog.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header" style="background-image: url('img/mrrobot/topic.jpg'); height: 530px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-heading">
+                        
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Post Content -->
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <h1 style="font-size: 45px;">Mr.Robot makinesi</h1>
+                    <h2 class="subheading" style="font-size: 26px;">Mr.Robot makinesi incelemesi.<br>Makine çözümü ve gerekli toollar ve bu toolların kullanımlarının incelemesi.</h2>
+
+                    <p>İyi günler. Bu yazımda Mr.Robot makinasını inceleyeceğim ve çözümünü gerçekleştirip adım adım bunu nasıl yaptığımı anlatacağım. Bu işlemi gerçekleştirirken kullandığım toolları ve kodları açıklayacağım. Mr.Robot makinasından bahsederek başlayalım o zaman. Öncelikle Mr.Robot makinası zaafiyetli bir çalışma makinasıdır. Bu tarz makinalar siber güvenlik alanında edindiğimiz bilgileri test etmemizi, geliştirmemizi ve pekiştirmemizi sağlar. Mr.Robot gibi makinaları vulnhub adresinden bulabilirsiniz. Ayrıca Mr.Robot makinesini de buradan ulaşabilirsiniz.</p>
+
+                    <p>Öncelikle Mr.Robot makinasını indiriyoruz. Bu bir hazır sanal makinadır yani .ova uzantısına sahiptir. Açtığımızda otomatik olarak VirtualBox için içeri aktar sekmesi ile karşılaşırız. Makinemizi içeri aktarıyoruz ve başlatmadan hemen önce saldırıyı gerçekleştireceğimiz bilgisayar ile aynı ağı kullandığından emin oluyoruz. Ben Köprü Bağdaştırıcısı ile bağlantı sağladım.</p>
+
+                    <p>İlk olarak yapmamız gereken şey IP tespiti. Nereye saldıracağımızı bilmemiz gerekiyor. Bunun için IP adresine ihtiyacımız. Yerel ağda bilgisayarlar IP adreslerini kullanarak iletişime geçerler.</p>
+
+                    <img src="img/mrrobot/ip_search.png" class="img-responsive" alt="">
+<br>
+                    <p style="display: inline;"><blockquote style="display: inline;">ifconfig</blockquote> komutu ile(ekranın sağ tarafı)</p>
+
+                    <p>Öncelikle kullandığımız makinanın ip adresini öğreniyoruz. Daha sonra bağlı olduğumuz ağda bulunan diğer makineleri tespit etmemiz gerekiyor. Bunun için</p>
+
+                    <p style="display: inline;"><blockquote style="display: inline;">netdiscover</blockquote> komutunu kullanıyoruz.(ekranın sol tarafı)</p>
+
+                    <p>Burada hedef makinamiza ait IP ve MAC adresini tespit ediyoruz. Artık hedefimizin kim olduğunu ve nasıl erişeceğimizi biliyoruz. Sırada zaafiyet tespiti yapmamız lazım. Bu tespit için nmap toolunu kullanacağım. nmap gerçekten çok yetenekli bir tool olduğunu kullandıkça anlayacaksınız.</p>
+
+                    <img src="img/mrrobot/nmap.png" class="img-responsive" alt="">
+<br>
+                    <p style="display: inline;"><blockquote style="display: inline;">nmap -A 192.168.1.25 </blockquote> komutu ile;</p>
+
+                    <p>Hedef makinada bir nmap taraması gerçekleştiriyoruz. Öncelikle -A parametresi agresif tarama parametresidir. Genel olarak zaafiyetli makinalara karşı kullanılan parametredir. Bazı scriptler kullanarak edinebildiği kadar bilgi edinmektedir. Fotoğraftada göründüğü gibi bir çok bilgiyi bize vermektedir. Bize düşense bu bilgileri değerlendirmek. Öncelikle tespit edilen portlara bakıyoruz. 22 ssh, 80 http, 443 ssl/http portları tespit edildi. 22 ssh portunun kapalı olduğu bilgisinede erişmiş bulunmaktayız. Yani en azından şimdilik ssh protokolü üzerinden bruteforce saldırı düzenleyemeyeceğiz. Gözümüze çarpan 80 ve 443 portları bu makinanın bir web sitesi yayınladığını gösteriyor bize.</p>
+
+                    <img src="img/mrrobot/web1.png" class="img-responsive" alt="">
+<br>
+                    <p>Hemen web sitesine gittik. Pek bir şey çıkartamadım açıkçası. Peki source kodu?</p>
+    
+                    <img src="img/mrrobot/web2.png" class="img-responsive" alt="">
+<br>
+                    <p>Bu yapıya aşina olanlar var muhakkak aramızda, fakat buradan da bir şey çıkartamadığımızı farz ederek devam ediyorum. Bu makina bir web makinası ise yine çok önemli bir tool olan nikto toolunu kullanacağız.</p>
+                    
+                    <img src="img/mrrobot/web3.png" class="img-responsive" alt="">
+<br>
+                    <blockquote style="display: inline;">nikto -h 192.168.1.25 komutunu kullanıyoruz.</blockquote><p style="display: inline;"> komutunu kullanıyoruz.</p>
+
+                    <p>nikto web server üzerinde tarama yapan bir araçtır. -h parametresi ile sitenin url/IP gibi erişim parametrelerini girebiliyoruz. nikto site üzerinde tarama yapıyor ve bize elde ettiği bilgileri bizimle paylaşıyor. nikto'nun bize verdiği bilgilere baktığımızda bu sayfanın bir Wordpress sayfası olduğunu görüyoruz. hatta bize wp-login.php uzantılı bir Wordpress login sayfası buldu. Bilgi toplamaya devam ediyoruz. Madem elimizde bir Wordpress sayfası var, birde wpscan ile Wordpress Scan yapmazsak olmaz.</p>
+
+                    <img src="img/mrrobot/web4.png" class="img-responsive" alt="">
+<br>
+                    <blockquote style="display: inline;">wpscan --url 192.168.1.25 </blockquote><p style="display: inline;">komutunu kullanıyoruz.</p>
+
+                    <p>wpscan Wordpress sayfalarında başarılı bir şekilde tarama yapan bir tooldur. Peki wpscan bize hangi bilgileri sundu. /robot.txt uzantısı tesbit etti. Yani erişime açık bir txt dosyası var. Hemen inceliyoruz.</p>
+
+                    <img src="img/mrrobot/txt.png" class="img-responsive" alt="">
+
+                    <p>Burada bir keyi elde etmiş olduk. Bir adet dic dosyası bulunmakta. Bu dosyayıda indiriyoruz.</p>
+
+                    <img src="img/mrrobot/txt_dic.png" class="img-responsive" alt=""> <br>
+                    <img src="img/mrrobot/txt_key.png" class="img-responsive" alt="">
+
+                    <p>İlk keyi de elde etmiş bulunmaktayız. Peki indirdiğimiz dic dosyasının içinde ne var diye baktığımızda bir password list ile karşılaşıyoruz. Bu demek oluyor ki bizim bir bruteforce yapmamız gerekecek. Elimizde bir Wordpress login sayfası var, password list var peki başka..</p>
+
+                    <img src="img/mrrobot/username.png" class="img-responsive" alt="">
+
+                    <p>İlginç şekilde dizideki karakterlerin önce gerçek isimlerini denemdim. Fakat Rami Malek'in canlandırdığı başrol karakteri olan elliot'ı denediğimde bir değişiklikle karşılaştım. Burada incorrect password uyarısı var. Peki o zaman böyle bir kullanıcımız var. Bruteforce atacağımız kullanıcıyı'da bu sayede öğrenmiş olduk. wpscan tooluna geri dönüyoruz.</p>
+
+                    <img src="img/mrrobot/wpscan-brute1.png" class="img-responsive" alt="">
+<br>
+                    <blockquote>wpscan --url 192.168.1.25 --passwords /root/Downloads/fsocity.dic --usernames elliot</blockquote>
+
+                    <p>Bu komut ile bir bruteforce saldırısı başlatıyoruz. Bu kısım biraz uzun sürebilir, isterseniz bir film açarak keyfinize bakabilirsiniz.</p>
+
+                    <img src="img/mrrobot/wpscan-brute2.png" class="img-responsive" alt="">
+
+                    <p>Film ve bruteforce işlemi bittiğine göre sonuçları değerlendirelim. Hemen [SUCCES] yazısı dikkatimizi çekmeyi başarıyor. Şifrede elimizde artık. O zaman login olalım. Elimizde ne var ne yok bir görelim.</p>
+
+                    <img src="img/mrrobot/dashboard1.png" class="img-responsive" alt="">
+                    
+                    <p>Artık Elliot Alderson kullanıcı olarak Dashboard'a giriş yapmış bulunmaktayız. Peki web makinaya nasıl geçiş yapacağız. Telaşa gerek yok şanslıyız ki google amcamız yanımızda.</p>
+
+                    <img src="img/mrrobot/php01.png" class="img-responsive" alt="">
+                    
+                    <p>Sorularımıza hemen cevap veriyor google amcamız.</p>
+
+                    <img src="img/mrrobot/php02.png" class="img-responsive" alt="">
+
+                    <p>Aradığım şeyi buldum. Uyguladığım sayfa aracılığı ile bana reverse shell sunan bir php sayfası.</p>
+
+                    <img src="img/mrrobot/php1.png" class="img-responsive" alt="">
+
+                    <p>Bu bir çalışma makinası olduğu için istediğiniz sayfaya bunu uygulayabilirsiniz. Güncel hayatta ise farkedilmemek için bir kaç konuya daha dikkat etmemiz gerekiyordu. En basit örneği ile ziyaret edilmeyen yada edilmeyecek bir sayfa olursa yaptığımız işlemi tamamlamak için daha çok vaktimiz olur. Peki burada ne yaptık bağlantı kurulacak IP adresine kendi IP adresimizi yazdık. Bağlantı için bizim hangi port'u kullanacağını da belirledik. Yapmamız gereken iki adım var.</p>
+
+                    <img src="img/mrrobot/shell1.png" class="img-responsive" alt="">
+<br>
+                    <blockquote style="display: inline;">nc -lvp 4444</blockquote><p style="display: inline;"> komutu kullanarak;</p>
+
+                    <p>Ekranın sol tarafında gördüğünüz gibi portumuzu dinlemeye başlıyoruz. Fakat bir hareketlilik olmayacaktır. O yüzden o hareketlenmeyi biz yatarmalıyız.</p>
+
+                    <blockquote style="display: inline;">curl http://192.168.1.24/404.php</blockquote><p style="display: inline;">komutu ile;</p>
+
+                    <p>404.php sayfasına küçük bir tetiklemede bulunuyoruz. Tabii ki bunu manuel olarakta yapabilirsiniz.</p>
+
+                    <img src="img/mrrobot/shell2.png" class="img-responsive" alt="">
+
+                    <p>Bu sayfaya girdiğinizde de bağlantının başlatıldığını göreceksiniz. Fakat şuan shell de değiliz. O halde shell'e geçiş yapıyoruz.</p>
+
+                    <img src="img/mrrobot/shell3.png" class="img-responsive" alt="">
+<br>
+                    <blockquote style="display: inline;">python -c 'import pty;pty.spawn("/bin/bash")'</blockquote><p style="display: inline;"> komutunu kullanıyoruz.</p>
+
+                    <p>Bu python yüklü sistemlerde çalışacak bir komuttur. Aslında bir python kodu ve komut birleşimi bir script diyebiliriz. Peki burada ne yapıyoruz? pty kütüphanesini import ediyoruz ve pty kütüphanesinin bir methodu olan spawn methodu ile verilen dizine geçiş yapıyoruz. Shell'e geçiş yaptıktan sonra kim olduğumuzu soruyoruz. Henüz root değiliz. Biraz içeride geziniyoruz.</p>
+
+                    <img src="img/mrrobot/root1.png" class="img-responsive" alt="">
+
+                    <p>robot adında bir dosya var. İçerisinde bir key daha var fakat erişim iznimiz yok. password.raw-md5 dosyasını okuduğumuzda md5 methodu ile şifrelenmiş bir bir parola olduğunu görüyoruz. Google amcamız yine yardımımıza koşuyor bu konuda ve parolayı öğrendik sonunda.</p>
+                    <blockquote style="display: inline;">su robot</blockquote><p style="display: inline;"> komutunu kullanıyoruz.</p>
+                    <p>Sorduğu parolayı yazdıktan sonra artık robot kullanıcısının hesabındayız ve ikinci key'i de alabiliyoruz bu sayede. Hala root olmadığımızın farkındayım. Bir makinanın içerisine girince hemen bir araştırma gezinme telaşı sarıyor insanı.</p>
+                    <p>Neyse acele etmeyelim ama artık root olma vakti geldi sanırım.</p>
+
+                    <img src="img/mrrobot/yetki.png" class="img-responsive" alt="">
+<br>
+                    <blockquote style="display: inline;">find / -perm -4000 2>/dev/null</blockquote><p style="display: inline;"> komutunu yazarak;</p>
+
+                    <p>/dev dosyasının içindeki erişebileceğimiz uzantıları görebiliyorum. Tabii ki burada tanıdık birileri var, nmap.</p>
+
+                    <img src="img/mrrobot/root2.png" class="img-responsive" alt="">
+
+                    <p>nmap toolunu başlatıyoruz fakat interactive parametresini kullanıyoruz. Bu sayede buradan tekrar</p>
+<br>
+                    <blockquote style="display: inline;">!sh</blockquote><p style="display: inline;"> komutu ile;</p>
+
+                    <p>Shell'e dönebiliyoruz. Peki şuan kimiz? root. Neden böyle oldu peki? nmap toolunun interactive parametresi root yetkisi ile çalışmaktadır. Fakat bizim robot kullanıcımız da nmap çalıştırma yetkisine sahipti. nmap interactive'e giriş yaptığımızda root yetkilerine sahip olduk, tekrar shell'e geçerkende yetkilerimiz yine bizde kaldı.</p>
+
+                    <a href="index.html">
+                        <span style="color: black; opacity: 50%; padding-left: 38%;" class="meta">Posted by <a href="index.html">Hüseyin KAVUNCU</a> on April 6, 2020</span>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <ul class="list-inline text-center">
+                        <li>
+                            <a href="https://www.instagram.com/kavuncu_azade_">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-instagram fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/in/h%C3%BCseyin-kavuncu-664485177">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/esasadam06">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mailto:hsynkavuncu.6@gmail.com">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+               
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="js/jqBootstrapValidation.js"></script>
+    <script src="js/contact_me.js"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="js/clean-blog.min.js"></script>
+
+</body>
+
+</html>
