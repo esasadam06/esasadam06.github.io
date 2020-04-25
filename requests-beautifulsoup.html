@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Requests ve BeautifulSoup4</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link href="css/clean-blog.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav style="background-color: black; opacity: 20%; margin-bottom: 10%;" class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Hüseyin Kavuncu</span>
+                    Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="index.html">Kavuncu</a>
+            </div>
+
+            
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+               <ul class="nav navbar-nav navbar-right" style="padding-right: 11%;">
+                     <li>
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="about.html">About</a>
+                    </li>
+                </ul>
+            </div>
+           
+        </div>
+        
+    </nav>
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <div style="margin-bottom: 3%;"></div>
+    <header class="intro-header" style="background-image: url('img/req/topic.jpg'); height: 530px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-heading">
+                        
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Post Content -->
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <h1 style="font-size: 45px;">Requests ve BeautifulSoup4</h1>
+                    <h2 class="subheading" style="font-size: 26px;">Requests ve BeautifulSoup4 kütüphanelerine başlangıç. Get methodu ile requests'e ilk adım.<br>Başlangıç için mini proje yapalım.</h2>
+
+                    <p>Merhabalar. Bu yazımda python kütüphanelerinden requests ve BeautifulSoup4 kütüphanelerini inceleyeceğim. BeautifulSoup4 kütüphanesinin requests kütüphanesini daha efektif kullanmamıza olanak sağlayan bir kütüphane olduğunu söyleyebilirim. Tabii böyle deyince requests kütüphanesi çok önemli bir kütüphane mi ki ek kütüphaneler kullanıyoruz? </p>
+
+                    <p>Evet, önemli bir kütüphane. İnternette bot kelimesini sık sık duymuşsunuzdur. Ne olduğunu da hepimiz sanırım biliyoruz ama beni yine de kısaca bahsedeyim. Bot internet sayfalarında insan etkileşimlerini taklit eden yazılımlardır.</p>
+
+                    <p>Peki biz bunlara neden mi ihtiyaç duyuyoruz? Bu soruya cevap dahi vermek istemiyorum, çünkü yazdığınız bot ile ne yapacağınız tamamen hayal gücünüze kalmış. </p>
+
+                    <p>Botlarında ne işe yaradığını bildiğimize göre artık requests kütüphanesi hakkında aklımızda ufak tefek bir şeyler vardır. Her zaman olduğu gibi kelime anlamı ile başlayalım incelemeye. Requests kelimesinin Türkçe karşılığı isteklerdir. Yani internet sitesinden istekte bulunabiliyoruz. Bir internet sayfasından 2 ekmek, bir dilim peynir isteyecek halimiz yok. Veri almak veya göndermek isteyeceğiz. Ufak ufak kodlayalım o zaman. </p>
+                    
+                    <img src="img/req/1.png" class="img-responsive" alt="">
+<br>
+                    <p style="display: inline;"><blockquote style="display: inline;">import requsets as req </blockquote> komutu ile;</p>
+
+                    <p>Requests kütüphanesini projemize import ediyoruz. Burada ben bu kütüphaneyi req kelimesi ile kullanmaya alıştığım için req kullandım. Siz kendi isteğiniz doğrultusunda bir kısaltma kullanabilirsiniz. </p>
+
+                    <p style="display: inline;"><blockquote style="display: inline;">site = req.get(“https://esasadam06.github.io/”)</blockquote> komutu;</p>
+
+                    <p>Requests kütüphanesinin bir methodu olan get methodu ile https://esasadam06.github.io/ adresini çekiyoruz ve site değişkenine atamasını yapıyoruz. Artık bu uzantıda bulunan siteye istekte bulunduk. </p>
+
+                    <p style="display: inline;"><blockquote style="display: inline;">print(site) </blockquote> komutu;</p>
+
+                    <p>Bize Response [200] dönüşü yaptı. Bu işlemimiz başarılı oldu anlamına geliyor.</p>
+
+                    <p style="display: inline;"><blockquote style="display: inline;">print(site.text) </blockquote> komutu;</p>
+
+                    <p>Bize sitenin source code’nu veriyor. Gördüğümüz üzere site üzerinde Ctrl+U yaptığımızda karşılaştığımız kod ile birebir aynı kodu elde ettik. Elimizde olan source code üzerinde biraz oynama yapalım. Öncelikle BeautifulSoup4 kütüphanesini eklememiz gerekiyor. </p>
+
+                    <img src="img/req/2.png" class="img-responsive" alt="">
+
+                    <p>Ctrl+Alt+S tuşlarına basarak ayarları açıyoruz. Project içerisinde Project Interpreter kısmı var. Buraya BeautifulSoup4 dahil etmemiz gerekiyor. Sağ tarafta artı işareti tıklıyoruz. </p>
+
+                    <img src="img/erq/3.png" class="img-responsive" alt="">
+
+                    <p>BeautifulSoup4 paketini aratıyoruz ve Install Pavkage diyoruz. Artık projemize BeautifulSoup4 kütüphanesini dahil edebiliriz.</p>
+    
+                    <img src="img/req/4.png" class="img-responsive" alt="">
+<br>
+                    <p style="display: inline;"><blockquote style="display: inline;">from bs4 import BeautifulSoup</blockquote> komutu;</p>
+
+                    <p>BeautifulSoup4 kütüphanesine import ediyorum.</p>
+
+                    <p style="display: inline;"><blockquote style="display: inline;">soup = BeautifulSoup(site.text, ‘html.pareser’)</blockquote> komutu;</p>
+
+                    <p>site değişkeninde tuttuğumuz source code’u html parse işlemine uygulayarak BeautifulSoup4 formatına geçirdir ve soup değişkenine atadık.</p>
+
+                    <p style="display: inline;"><blockquote style="display: inline;">print(soup.find_all(‘h2’))</blockquote> komutu;</p>
+
+                    <p>BeautifulSoup4 formatında olan soup değişkeni içerisinde h2 etiketi taşıyan verileri parse ediyor ve konsola yazdırıyor. Evet gayet başarılı ama sanki görüntülemek ve listelemek için bazı fazlalıklar var. Mesela h2 etiketleri görünüyor, yazılar br etiketleri var ve source kodu olduğu gibi aldığı için gereksiz boşluklar da var.</p>
+
+                    <img src="img/req/5.png" class="img-responsive" alt="">
+<br>
+                    <p style="display: inline;"><blockquote style="display: inline;">list = soup.findAll(“h2”)</blockquote> komutu ile;</p>
+
+                    <p>Az önce listelediğimiz h2 etiketli içerikleri list değişkenine atadık.</p>
+
+                    <p style="display: inline;"><blockquote style="display: inline;">baslik = [] </blockquote> komutu ile;</p>
+
+                    <p>Bir dizi oluşturuyoruz. Başlıkları burada tutacağız.</p>
+
+                    <blockquote>
+                        for İ in range(len(list)): <br><em style="padding-left: 5%;">for j in list[i]: <br> <em style="padding-left: 10%;"> text = str(j).replace("  ","").replace("\n","").replac<em>e('<</em>br/>',"") baslik.append(text)</em> </em>
+                    </blockquote>
+
+                    <p>Bu kod ile bir düzenleme işlemi yaptık. Öncelikle h2 etiketi sayısı kadar for döngüsü ile listemizde gezindik. Bu sırada listenin içerisinde yine bir for döngüsü ile düzenleme yapıyoruz. Öncelikle buırada text diye bir değişkene bu listenin o anki elemanını atıyoruz. Tabii bazı şartlarla. Öncelikle birden fazla boşluk gördüğü yerleri kaldırıyor, alt satıra inme etiketi olan \n etiketlerini kaldırıyor ve br etiketini kaldırıyor.</p>
+
+                    <blockquote>for i in baslik: <br> <em style="padding-left: 5%;">print(i)</em> </blockquote>
+
+                    <p>Bu for döngüsü ile baslıkları tek tek yazdırıyoruz. Gördüğünüz gibi artık düzgün ve sıralı bir şekilde başlıları elde edebildik. </p>
+
+                    <a href="index.html">
+                        <span style="color: black; opacity: 50%; padding-left: 38%;" class="meta">Posted by <a href="index.html">Hüseyin KAVUNCU</a> on April 25, 2020</span>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <ul class="list-inline text-center">
+                        <li>
+                            <a href="https://www.instagram.com/kavuncu_azade_">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-instagram fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/in/h%C3%BCseyin-kavuncu-664485177">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/esasadam06">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mailto:hsynkavuncu.6@gmail.com">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+               
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="js/jqBootstrapValidation.js"></script>
+    <script src="js/contact_me.js"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="js/clean-blog.min.js"></script>
+
+</body>
+
+</html>
