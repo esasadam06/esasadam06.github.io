@@ -217,16 +217,57 @@
 
                     <p>Bu tarama hedef makineye ping atmaz. Bir ağda host keşfi yapma ihtiyacı duymadığımızda kullanabileceğimiz bir parametredir. Bazı CTF makinelerinde bu parametre ile tarama işlemini başarılı bir şekilde yapabilirsiniz. </p>
 
+                    <h3>Zamanlı Tarama</h3>
 
+                    <img src="img/nmap/nmap16.png" class="img-responsive" alt="">
+<br>
+                    <blockquote>nmap --min-rate 10 192.168.43.145</blockquote>
 
+                    <blockquote style="display: inline;">nmap --max-rate 10 192.168.43.145</blockquote> taraması ile;
 
+                    <p>Bu taramada --min-rate ve --max-rate parametrelerini kullandık. Bu parametreler paketler arasında ki gecikme süresini belirlemek için kullanılır. Min için örnek verecek olursak --min-rate 10 parametresini kullanırsak bir saniye içerisinde minimum 10 paket gönderilir. Max için ise durum tam tersidir. Örneğin --max-rate 10 parametresini kullanırsak bir saniye içerisinde en fazla 10 paket gönderilir. </p>
 
+                    <h3>IP Yanıltma</h3>
 
+                    <img src="img/nmap/nmap17.png" class="img-responsive" alt="">
+<br>
+                    <blockquote style="display: inline;">nmap -D192.168.43.235,192.168.43.106,192.168.43.196 192.168.43.145</blockquote><p style="display: inline;">taraması ile;</p>
 
+                    <p>Saldırgan kimliğini gizlemeye çalıştık. Burada gerçekleşen olay paketlerin bir kısmını burada benim belirttiğim IP adreslerini kullanarak gönderiyor. Yani bu IP adreslerini yanıltıcı olarak kullanıyoruz. Yine saldırdığımız ağı dinleyen bir yetkili olduğunu varsayarsak bizi tespit etmesi oldukça zorlaşacaktır.</p>
 
+                    <h3>MAC Yanıltma</h3>
 
+                    <img src="img/nmap/nmap19.png" class="img-responsive" alt="">
+<br>
+                    <blockquote style="display: inline;">nmap --spoof-mac 0 192.168.43.145 </blockquote> taraması ile;
 
+                    <p>Bu taramada --spoof-mac parametresi ile MAC adresimizi saklayacağız. Log kayıtlarına MAC adresimizin düşmemesi için sahte MAC adresi kullanıyoruz. Burada 0 parametresi ile rastgele bir MAC adresi üretip onu kullanmasını sağladık fakat burada ağda bulunan bir makinenin MAC adresini kullanarak log kayıtlarını inceleyen yetkilinin bizi ve saldırıyı tespitini engelleyebiliriz.</p>
 
+                    <h3>Paket Boyutlandıramak</h3>
+
+                    <img src="img/nmap/nmap18.png" class="img-responsive" alt="">
+<br>
+                    <blockquote>nmap -f 16 192.168.43.145 </blockquote>
+
+                    <blockquote style="display: inline;">nmap --mtu 16 192.168.43.145</blockquote> taraması ile;
+                    
+                    <p>Bu iki taramayı birlikte göstermek istedim çünkü ikisinin de mantığı aynı aslında. -f parametresi burada gönderilen paketleri 8 byte’lık parçalar halinde gönderir. Bu şekilde firewall’u atlatmayı hedefler. --mtu parametresi ise sekiz ve katları halinde parametreler alır ve paketleri bu boyutlarda biçimlendirir ve yeni boyutlarında gönderir. Burada ben 16 byte’lık paketler gönderdim. Bu şekilde yine firewall’u atlatmayı deneyebiliriz.</p>
+
+                    <h3>Dosyadan IP Tarama</h3>
+                    
+                    <img src="img/nmap/nmap20.png" class="img-responsive" alt="">
+<br>
+                    <blockquote style="display: inline;">nmap -iL /root/Desktop/nmap/ip_list</blockquote> taraması ile;
+
+                    <p>Daha önceden oluşturduğum IP adreslerinin bulunduğu dosyayı -iL parametresi ile kullanarak bu dosyada bulunan bütün IP adreslerini taradık.</p>
+
+                    <h3>nmap Çıktısı Alma</h3>
+
+                    <img src="img/nmap/nmap21.png" class="img-responsive" alt="">
+<br>
+                    <blockquote style="display: inline;">Nmap -oN /root/Deskto/nmap/result 192.168.43.145</blockquote> taraması ile;
+
+                    <p>Gerçekleştirdiğimiz tarama sonucunu belirttiğimiz dizinde belirttiğimiz isimde bir dosyaya yazdırıyoruz. Aslında çok önemli değil gibi görünen bu parametre aslında bir takım içerisinde çalışırken işlerinizi çok kolaylaştıracak parametrelerden birisidir. Bu dosya uzantısı için -oX/--oS/oG parametrelerini de kullanabilirsiniz. Bu parametreler farklı uzantılarda kayıt yaparlar.</p>
 
                     <a href="index.html">
                         <span style="color: black; opacity: 50%; padding-left: 38%;" class="meta">Posted by <a href="index.html">Hüseyin KAVUNCU</a> on May 2, 2020</span>
