@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Python Requests Kütüphanesi</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link href="css/clean-blog.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav style="background-color: black; opacity: 20%; margin-bottom: 10%;" class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Hüseyin Kavuncu</span>
+                    Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="index.html">Kavuncu</a>
+            </div>
+
+            
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+               <ul class="nav navbar-nav navbar-right" style="padding-right: 11%;">
+                     <li>
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="about.html">About</a>
+                    </li>
+                </ul>
+            </div>
+           
+        </div>
+        
+    </nav>
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <div style="margin-bottom: 3%;"></div>
+    <header class="intro-header" style="background-image: url('img/req2/topic.jpg'); height: 530px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-heading">
+                        
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Post Content -->
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <h1 style="font-size: 45px;">Python Requests Kütüphanesi</h1>
+                    <h2 class="subheading" style="font-size: 26px;">Requests kütüphanesi nedir, nasıl kullanılır? <br> Hangi metotlar(fonksiyonlar) ne amaçla kullanılır?<br>Requests metotları(fonksiyonları) nasıl kullanılır?</h2>
+
+                    <p>Merhabalar. Bu yazımda daha önce beautifulsoap4 kütüphanesi ile beraber incelediğimiz requests kütüphanesini incelemeye devam edeceğiz. Uygulamalı şekilde devam edeceğiz.</p>
+
+                    <p>İlk  olarak post metotunu kullanacağız.</p>
+                    
+                    <img src="img/req2/index.png" class="img-responsive" alt="">
+
+                    <p>Burada post işlemini kullandığımız bir form oluşturdum ve https://esasadam06.github.io/post/index.html sayfasına kaydettim. Bu forma bir giriş yapıldığında https://esasadam06.github.io/about.html adresine yönlendirileceğiz. Burada işimiz bitti.</p>
+
+                    <img src="img/req2/requests,1.png" class="img-responsive" alt="">
+<br>
+                    <blockquote>import requests as req <br>site = req.get.(‘https://esasadam06.github.io/post/index.html’) <br>print(site.text)</blockquote>
+
+                    <p>Öncelikle kütüphanemizi ekliyoruz. Bir önceki yazımda kullandığım bir metot olan get metotu ile siteye dair bilgileri çekiyor ve bunları site adında ki değişkenimize atıyoruz. Kontrol amaçlı olarak sitenin source code’unu ekrana yazdırıyoruz. Gördüğünüz gibi yazdığımız html kodu aldık. Bu bağlantıyı sağladığımızı gösterir. Önceki yazımda bahsettiğimiz metotlardan da kısaca bahsettik ve başarılı bir şekilde bağlantı sağladığımıza göre devam edebiliriz.</p>
+                    
+                    <img src="img/req2/requests,2.png" class="img-responsive" alt="">
+
+                    <p>Bu çıktıyı alınca bir anlam veremedim öncelikle açıkçası fakat daha sonra github.io üzerinde post metotunu kullanmamıza izin verilmediğini fark ettim fakat kodumuz çalışıyor başka bir platformda denedim. Bu konuda içiniz rahat olsun.</p>
+
+                    <blockquote>url = (‘https://esasadam06.github.io/post/’) </blockquote>
+
+                    <p>Öncelikle sitemizin url adresini url adında bir değişkene atadık. Burada atama yaparken index.html uzantısını vermedim. Yani bir şart olduğundan değil. Dizini verdiğimizde dizindeki index.html uzantısını kontrol edecektir. Aynı şekilde kullandığınız tarayıcıya bir uzantı yazdığınızda o uzantının index.html dosyasına bağlanacaktır.</p>
+
+                    <blockquote>user = ‘kullanıcı_adi’ <br> password = ‘parola’</blockquote>
+
+                    <p>Kullanıcı adı ve şifreyi iki ayrı değişkene atadık.</p>
+
+                    <blockquote>post_objesi = {user : password}</blockquote>
+
+                    <p>Burada post_objesi adında bir değişkene user ve password değişkenlerini atadık. Bildiğimiz üzere python nesne yönelimli bir programlama dilidir. Oluşturduğumuz değişkenler de bizim atama işlemimize göre tip alır. Burada obje kelimesini özellikle kullandım yani. Hani kulağımıza fısıldanmış olsun.</p>
+
+                    <blockquote>after_post = req.post(url, post_objesi)</blockquote>
+
+                    <p>Requests kütüphanesinin post fonksiyonunu kullandık. Post fonksiyonu en az iki parametre alır. Post işleminin uygulanacağı url uzantısı ve post işlemi için kullanılacak data. </p>
+
+                    <blockquote>print(after_post.text)</blockquote>
+
+                    <p>Burada post işleminden elde ettiğimiz site verisinin source code’unu ekrana yazdırıyoruz. Gönründüğü gibi açılan sayfanın site bilgileri aldık. Fakat bizim belirttiğimiz gibi about.html sayfasına gitmedi.</p>
+
+                    <blockquote>print(after_post.reason) </blockquote>
+
+                    <p>Request kütüphanesinin reason metotu ile sebebini öğreniyoruz. Reason kelimesinin anlamı sebep. Sitenin açılmama sebebini veriyor bize.</p>
+
+                    <img src="img/req2/requests,3.png" class="img-responsive" alt="">
+<br>
+                    <blockquote>print(site.url)</blockquote>
+
+                    <p>Url metotu ile siteler veya uzantılar arasında gezinirken hangi uzantıda olduğumuzu bilmemizi sağlayacaktır. Yani örneğin bir web sitesinde tarama yapıp ‘A’ bilgisinin olduğu sayfaları alacağız. Bu tarz işlemler için kullanabileceğimiz bir metot.</p>
+
+                    <blockquote>print(site.reason)</blockquote>
+
+                    <p>Reason metotu burada OK döndürdü yani herhangi bir hata mesajı almadık. Bu metotu da sitede tarama yaparken kullanabileceğimiz bir, hatta kullanmamız gereken bir metottur.</p>
+                    
+                    <img src="img/req2/requests,4.png" class="img-responsive" alt="">
+<br>
+                    <blockquote>print(site.apparent_encoding)</blockquote>
+
+                    <p>Burada gördüğümüz gibi sitenin Unicode dönüşüm türünü döndürdü. Bildiğiniz üzere sitelerde ve veritabanlarında Unicode dönüşümünü sıkça kullanırız. Peki buradan dönen veri ne işimize yarayacak? Mesela bu sayfada utf-8 olduğundan dolayı bu sayfada Türkçe karakterleri de post işleminde kullanabiliriz herhangi bir bozulma veya sıkıntı yaşamayız bu konuda.</p>
+
+                    <img src="img/req2/requests,4.png" class="img-responsive" alt="">
+<br>
+                    <blockquote>print(site.request) <br> print(after_post.request)</blockquote>
+
+                    <p>Bu metotumuz işlemimizin hangi requests metotu ile yapıldığının verisini verir. Burada site içinde after_post içinde bu metotu kullandım ve ikisininde çıktıları da farklı. Site çıktısı [GET] ama after_post çıktısı [POST]. Çünkü site değişkenine gelen site verileri get metotu ile gelmişti fakat after_post değişkenine gelen site verileri post metotu sonucu geldi.</p>
+
+                    <p>Bu metotların yanı sıra status_code, ok, next gibi metotlara sahiptir. Bu metotları da kullanabilirsiniz. Requests kütüphanesi web üzerine çalışan arkadaşlar için aslında oldukça kolay ve kullanışlı bir kütüphane.</p>
+
+                    <a href="index.html">
+                        <span style="color: black; opacity: 50%; padding-left: 38%;" class="meta">Posted by <a href="index.html">Hüseyin KAVUNCU</a> on May 11, 2020</span>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <ul class="list-inline text-center">
+                        <li>
+                            <a href="https://www.instagram.com/kavuncu_azade_">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-instagram fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/in/h%C3%BCseyin-kavuncu-664485177">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/esasadam06">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mailto:hsynkavuncu.6@gmail.com">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+               
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="js/jqBootstrapValidation.js"></script>
+    <script src="js/contact_me.js"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="js/clean-blog.min.js"></script>
+
+</body>
+
+</html>
