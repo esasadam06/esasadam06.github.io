@@ -87,17 +87,17 @@
 
                     <p>İlk  olarak post metotunu kullanacağız.</p>
                     
-                    <img src="img/req2/index.png" class="img-responsive" alt="">
+                    <img src="http://huseyinkavuncu.com/img/req2/index.png" class="img-responsive" alt="">
 
                     <p>Burada post işlemini kullandığımız bir form oluşturdum ve https://esasadam06.github.io/post/index.html sayfasına kaydettim. Bu forma bir giriş yapıldığında https://esasadam06.github.io/about.html adresine yönlendirileceğiz. Burada işimiz bitti.</p>
 
-                    <img src="img/req2/requests,1.png" class="img-responsive" alt="">
+                    <img src="http://huseyinkavuncu.com/img/req2/requests,1.png" class="img-responsive" alt="">
 <br>
                     <blockquote>import requests as req <br>site = req.get.(‘https://esasadam06.github.io/post/index.html’) <br>print(site.text)</blockquote>
 
                     <p>Öncelikle kütüphanemizi ekliyoruz. Bir önceki yazımda kullandığım bir metot olan get metotu ile siteye dair bilgileri çekiyor ve bunları site adında ki değişkenimize atıyoruz. Kontrol amaçlı olarak sitenin source code’unu ekrana yazdırıyoruz. Gördüğünüz gibi yazdığımız html kodu aldık. Bu bağlantıyı sağladığımızı gösterir. Önceki yazımda bahsettiğimiz metotlardan da kısaca bahsettik ve başarılı bir şekilde bağlantı sağladığımıza göre devam edebiliriz.</p>
                     
-                    <img src="img/req2/requests,2.png" class="img-responsive" alt="">
+                    <img src="http://huseyinkavuncu.com/img/req2/requests,2.png" class="img-responsive" alt="">
 
                     <p>Bu çıktıyı alınca bir anlam veremedim öncelikle açıkçası fakat daha sonra github.io üzerinde post metotunu kullanmamıza izin verilmediğini fark ettim fakat kodumuz çalışıyor başka bir platformda denedim. Bu konuda içiniz rahat olsun.</p>
 
@@ -125,7 +125,7 @@
 
                     <p>Request kütüphanesinin reason metotu ile sebebini öğreniyoruz. Reason kelimesinin anlamı sebep. Sitenin açılmama sebebini veriyor bize.</p>
 
-                    <img src="img/req2/requests,3.png" class="img-responsive" alt="">
+                    <img src="http://huseyinkavuncu.com/img/req2/requests,3.png" class="img-responsive" alt="">
 <br>
                     <blockquote>print(site.url)</blockquote>
 
@@ -135,13 +135,13 @@
 
                     <p>Reason metotu burada OK döndürdü yani herhangi bir hata mesajı almadık. Bu metotu da sitede tarama yaparken kullanabileceğimiz bir, hatta kullanmamız gereken bir metottur.</p>
                     
-                    <img src="img/req2/requests,4.png" class="img-responsive" alt="">
+                    <img src="http://huseyinkavuncu.com/img/req2/requests,4.png" class="img-responsive" alt="">
 <br>
                     <blockquote>print(site.apparent_encoding)</blockquote>
 
                     <p>Burada gördüğümüz gibi sitenin Unicode dönüşüm türünü döndürdü. Bildiğiniz üzere sitelerde ve veritabanlarında Unicode dönüşümünü sıkça kullanırız. Peki buradan dönen veri ne işimize yarayacak? Mesela bu sayfada utf-8 olduğundan dolayı bu sayfada Türkçe karakterleri de post işleminde kullanabiliriz herhangi bir bozulma veya sıkıntı yaşamayız bu konuda.</p>
 
-                    <img src="img/req2/requests,4.png" class="img-responsive" alt="">
+                    <img src="http://huseyinkavuncu.com/img/req2/requests,4.png" class="img-responsive" alt="">
 <br>
                     <blockquote>print(site.request) <br> print(after_post.request)</blockquote>
 

